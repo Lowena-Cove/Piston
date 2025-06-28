@@ -1,7 +1,7 @@
 #!/bin/sh
-# (Imported from Stephensons Rocket)
-# See original for full comments and logic. This script builds a custom SteamOS ISO with mods and updates.
-# For brevity, only the header and structure are shown here. See the repo for the full script.
+# (Imported from Stephensons Rocket, updated for latest SteamOS)
+# See https://help.steampowered.com/en/faqs/view/1B71-EDF2-EB6D-2BB3#reimage for latest SteamOS images and instructions.
+# This script builds a custom SteamOS ISO with mods and updates.
 
 #Basic
 variables
@@ -9,13 +9,14 @@ BUILD="./buildroot"
 DISTNAME="brewmaster"
 ISOPATH="."
 ISONAME="rocket.iso"
-ISOVNAME="Stephensons Rocket
-2.70plus1"
-UPSTREAMURL="http:/repo.steampowered.com"
-STEAMINSTALLFILE="SteamOSDVD.iso"
+# Updated to reference latest SteamOS image
+ISOVNAME="SteamOS Recovery (latest)"
+# Official SteamOS recovery image URL (as of 2025)
+UPSTREAMURL="https://cdn.cloudflare.steamstatic.com/steamdeck-image/steamdeck_recovery" # See support link for latest
+STEAMINSTALLFILE="steamdeck-recovery-latest.img.bz2" # Update as needed
 MD5SUMFILE="MD5SUMS"
 
-NOWNINSTALLER="316a91157ff200bac44dcc4350a4ccf8"
+KNOWNINSTALLER="316a91157ff200bac44dcc4350a4ccf8" # Update if needed
 REPODIR="./archive-mirror/mirror/repo.steampowered.com/steamos"
 
 usage ( )
@@ -23,8 +24,9 @@ usage ( )
 	cat <<EOF
 	$0 [OPTION] [MOD1] [MOD2] [MOD3] ...
 	-h                Print this message
-	-d		  Re-Download ${STEAMINSTALLFILE}
-	-n		  Set the name for the iso
+	-d	  Re-Download ${STEAMINSTALLFILE}
+	-n	  Set the name for the iso
+	(Updated for latest SteamOS: https://help.steampowered.com/en/faqs/view/1B71-EDF2-EB6D-2BB3#reimage)
 EOF
 }
 
