@@ -2,19 +2,47 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.piston">
 
+    <!-- Permissions for Linux-on-Android functionality -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
     <application
         android:allowBackup="true"
-        android:label="Piston"
+        android:label="Piston - Linux on Android"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.AppCompat.Light.DarkActionBar"
+        android:requestLegacyExternalStorage="true">
+        
+        <activity 
+            android:name=".MainActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        
+        <activity 
+            android:name=".DistributionActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+            
+        <activity 
+            android:name=".ContainerActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+            
+        <service 
+            android:name=".LinuxContainerService"
+            android:enabled="true"
+            android:exported="false" />
     </application>
 
 </manifest>

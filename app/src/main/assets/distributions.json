@@ -1,0 +1,157 @@
+{
+  "distributions": [
+    {
+      "id": "ubuntu-22.04",
+      "name": "Ubuntu 22.04 LTS",
+      "description": "Popular Linux distribution with excellent hardware support and large community",
+      "version": "22.04",
+      "architecture": ["arm64", "armhf", "amd64", "i386"],
+      "category": "desktop",
+      "icon": "ubuntu",
+      "size": "1.2GB",
+      "download_url": {
+        "arm64": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04-base-arm64.tar.gz",
+        "armhf": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04-base-armhf.tar.gz",
+        "amd64": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04-base-amd64.tar.gz",
+        "i386": "https://cdimage.ubuntu.com/ubuntu-base/releases/22.04/release/ubuntu-base-22.04-base-i386.tar.gz"
+      },
+      "install_script": "ubuntu_install.sh",
+      "post_install_script": "ubuntu_post_install.sh",
+      "desktop_environments": ["xfce4", "lxde", "mate"],
+      "default_user": "ubuntu",
+      "features": ["vnc", "ssh", "audio", "gpu"]
+    },
+    {
+      "id": "debian-12",
+      "name": "Debian 12 (Bookworm)",
+      "description": "Stable and reliable Linux distribution, great for servers and development",
+      "version": "12",
+      "architecture": ["arm64", "armhf", "amd64", "i386"],
+      "category": "server",
+      "icon": "debian",
+      "size": "800MB",
+      "download_url": {
+        "arm64": "https://github.com/debuerreotype/docker-debian-artifacts/raw/dist-arm64v8/bookworm/rootfs.tar.xz",
+        "armhf": "https://github.com/debuerreotype/docker-debian-artifacts/raw/dist-arm32v7/bookworm/rootfs.tar.xz",
+        "amd64": "https://github.com/debuerreotype/docker-debian-artifacts/raw/dist-amd64/bookworm/rootfs.tar.xz",
+        "i386": "https://github.com/debuerreotype/docker-debian-artifacts/raw/dist-i386/bookworm/rootfs.tar.xz"
+      },
+      "install_script": "debian_install.sh",
+      "post_install_script": "debian_post_install.sh",
+      "desktop_environments": ["xfce4", "lxde", "gnome"],
+      "default_user": "debian",
+      "features": ["vnc", "ssh", "audio"]
+    },
+    {
+      "id": "arch-latest",
+      "name": "Arch Linux",
+      "description": "Rolling release distribution for advanced users who want cutting-edge software",
+      "version": "latest",
+      "architecture": ["arm64", "amd64"],
+      "category": "advanced",
+      "icon": "arch",
+      "size": "600MB",
+      "download_url": {
+        "arm64": "http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz",
+        "amd64": "https://archive.archlinux.org/iso/latest/archlinux-bootstrap-x86_64.tar.gz"
+      },
+      "install_script": "arch_install.sh",
+      "post_install_script": "arch_post_install.sh",
+      "desktop_environments": ["xfce4", "i3", "kde"],
+      "default_user": "arch",
+      "features": ["vnc", "ssh", "audio", "gpu"]
+    },
+    {
+      "id": "alpine-latest",
+      "name": "Alpine Linux",
+      "description": "Security-oriented, lightweight Linux distribution based on musl libc and busybox",
+      "version": "latest",
+      "architecture": ["arm64", "armhf", "amd64", "i386"],
+      "category": "minimal",
+      "icon": "alpine",
+      "size": "200MB",
+      "download_url": {
+        "arm64": "https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/aarch64/alpine-minirootfs-latest-aarch64.tar.gz",
+        "armhf": "https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/armhf/alpine-minirootfs-latest-armhf.tar.gz",
+        "amd64": "https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86_64/alpine-minirootfs-latest-x86_64.tar.gz",
+        "i386": "https://dl-cdn.alpinelinux.org/alpine/latest-stable/releases/x86/alpine-minirootfs-latest-x86.tar.gz"
+      },
+      "install_script": "alpine_install.sh",
+      "post_install_script": "alpine_post_install.sh",
+      "desktop_environments": ["xfce4", "lxde"],
+      "default_user": "alpine",
+      "features": ["vnc", "ssh"]
+    },
+    {
+      "id": "steamos-latest",
+      "name": "SteamOS (Steam Deck)",
+      "description": "Gaming-focused Linux distribution based on Arch Linux, designed for Steam Deck",
+      "version": "latest",
+      "architecture": ["amd64"],
+      "category": "gaming",
+      "icon": "steamos",
+      "size": "8GB",
+      "download_url": {
+        "amd64": "https://cdn.cloudflare.steamstatic.com/steamdeck-image/steamdeck_recovery/steamdeck-recovery-latest.img.bz2"
+      },
+      "install_script": "steamos_install.sh",
+      "post_install_script": "steamos_post_install.sh",
+      "desktop_environments": ["kde"],
+      "default_user": "deck",
+      "features": ["vnc", "ssh", "audio", "gpu", "gaming"],
+      "special_type": "iso"
+    },
+    {
+      "id": "kali-latest",
+      "name": "Kali Linux",
+      "description": "Penetration testing and security auditing Linux distribution",
+      "version": "latest",
+      "architecture": ["arm64", "armhf", "amd64"],
+      "category": "security",
+      "icon": "kali",
+      "size": "2GB",
+      "download_url": {
+        "arm64": "https://kali.download/base-images/kali-linux-docker-arm64.tar.xz",
+        "armhf": "https://kali.download/base-images/kali-linux-docker-armhf.tar.xz",
+        "amd64": "https://kali.download/base-images/kali-linux-docker-amd64.tar.xz"
+      },
+      "install_script": "kali_install.sh",
+      "post_install_script": "kali_post_install.sh",
+      "desktop_environments": ["xfce4", "kde", "gnome"],
+      "default_user": "kali",
+      "features": ["vnc", "ssh", "audio", "gpu"]
+    }
+  ],
+  "categories": [
+    {
+      "id": "desktop",
+      "name": "Desktop",
+      "description": "General purpose desktop distributions"
+    },
+    {
+      "id": "server",
+      "name": "Server",
+      "description": "Server-oriented distributions"
+    },
+    {
+      "id": "advanced",
+      "name": "Advanced",
+      "description": "For experienced Linux users"
+    },
+    {
+      "id": "minimal",
+      "name": "Minimal",
+      "description": "Lightweight distributions"
+    },
+    {
+      "id": "gaming",
+      "name": "Gaming",
+      "description": "Gaming-focused distributions"
+    },
+    {
+      "id": "security",
+      "name": "Security",
+      "description": "Security and penetration testing"
+    }
+  ]
+}
