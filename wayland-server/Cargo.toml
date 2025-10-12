@@ -1,0 +1,26 @@
+[package]
+name = "wayland-server"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+anyhow = { workspace = true }
+log = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+
+# Wayland protocol support
+wayland-server = { workspace = true }
+wayland-protocols = { workspace = true }
+
+# Compositor core
+compositor-core = { path = "../compositor-core" }
+
+# Additional dependencies
+nix = "0.27"
+calloop = "0.12"
+wayland-backend = "0.3"
+
+[lib]
+crate-type = ["cdylib", "rlib"]
