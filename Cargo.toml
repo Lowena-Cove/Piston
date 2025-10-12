@@ -1,0 +1,61 @@
+[package]
+name = "steamos-emulator"
+version = "0.1.0"
+edition = "2021"
+authors = ["Piston Team"]
+description = "A Rust-based Linux emulator for running SteamOS environments"
+license = "MIT"
+repository = "https://github.com/piston/steamos-emulator"
+
+[dependencies]
+# Core emulation dependencies
+byteorder = "1.4"
+memmap2 = "0.9"
+libc = "0.2"
+nix = "0.27"
+
+# Async runtime for handling multiple processes
+tokio = { version = "1.0", features = ["full"] }
+
+# Command line interface
+clap = { version = "4.0", features = ["derive"] }
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# Error handling
+anyhow = "1.0"
+thiserror = "1.0"
+
+# Serialization for configuration
+serde = { version = "1.0", features = ["derive"] }
+toml = "0.8"
+
+# File system operations
+walkdir = "2.3"
+
+# Compression for handling disk images
+flate2 = "1.0"
+tar = "0.4"
+
+# Network emulation (optional)
+socket2 = "0.5"
+
+[dev-dependencies]
+tempfile = "3.8"
+
+[[bin]]
+name = "steamos-emu"
+path = "src/main.rs"
+
+[lib]
+name = "steamos_emulator"
+path = "src/lib.rs"
+
+[features]
+default = ["x86_64", "filesystem", "networking"]
+x86_64 = []
+filesystem = []
+networking = []
+debug = []
