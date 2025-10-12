@@ -4,17 +4,22 @@ android {
     compileSdkVersion 34
     defaultConfig {
         applicationId "com.piston"
-        minSdkVersion 28
+        minSdkVersion 21  // Lowered for older device support
         targetSdkVersion 34
         versionCode 2
-        versionName "2.0"
+        versionName "1.1-legacy"
         externalNativeBuild {
             cmake {
-                cppFlags "-std=c11"
+                cppFlags "-std=c11 -DLEGACY_SUPPORT=1"
+                // Add flags for older CPU compatibility
+                arguments "-DANDROID_ARM_MODE=arm", 
+                          "-DANDROID_ARM_NEON=FALSE",
+                          "-DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a"
             }
         }
         ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            // Extended architecture support including older variants
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
         }
     }
     buildTypes {
@@ -22,31 +27,30 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+        // Add legacy build type for older systems
+        legacy {
+            initWith debug
+            minifyEnabled false
+            debuggable false
+            externalNativeBuild {
+                cmake {
+                    cppFlags "-std=c11 -DLEGACY_SUPPORT=1 -O2 -fno-strict-aliasing"
+                    arguments "-DANDROID_ARM_MODE=arm"
+                }
+            }
+        }
     }
     externalNativeBuild {
         cmake {
             path "src/main/cpp/CMakeLists.txt"
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
 }
 
 dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'androidx.recyclerview:recyclerview:1.3.2'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'com.google.android.material:material:1.11.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel:2.7.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata:2.7.0'
-    implementation 'androidx.fragment:fragment:1.6.2'
-    implementation 'androidx.navigation:navigation-fragment:2.7.6'
-    implementation 'androidx.navigation:navigation-ui:2.7.6'
-    implementation 'androidx.preference:preference:1.2.1'
-    implementation 'androidx.work:work-runtime:2.9.0'
-    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
-    implementation 'com.google.code.gson:gson:2.10.1'
 }
