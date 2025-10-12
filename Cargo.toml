@@ -59,3 +59,43 @@ x86_64 = []
 filesystem = []
 networking = []
 debug = []
+[workspace]
+members = [
+    "compositor-core",
+    "wayland-server", 
+    "android-bindings",
+    "graphics-pipeline"
+]
+
+[workspace.dependencies]
+# Common dependencies for all crates
+tokio = { version = "1.0", features = ["full"] }
+anyhow = "1.0"
+log = "0.4"
+env_logger = "0.10"
+
+# Graphics and windowing
+winit = "0.29"
+wgpu = "0.18"
+raw-window-handle = "0.5"
+
+# Wayland protocol support
+wayland-server = "0.31"
+wayland-protocols = "0.31"
+
+# Android NDK bindings
+ndk = "0.8"
+ndk-sys = "0.5"
+jni = "0.21"
+
+# Async and concurrency
+futures = "0.3"
+async-trait = "0.1"
+
+# Serialization and IPC
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.3"
+
+# Memory management
+shared_memory = "0.12"
+memmap2 = "0.9"
