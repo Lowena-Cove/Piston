@@ -1,0 +1,28 @@
+[package]
+name = "compositor-core"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+tokio = { workspace = true }
+anyhow = { workspace = true }
+log = { workspace = true }
+futures = { workspace = true }
+async-trait = { workspace = true }
+serde = { workspace = true }
+bincode = { workspace = true }
+shared_memory = { workspace = true }
+memmap2 = { workspace = true }
+
+# Graphics dependencies
+wgpu = { workspace = true }
+raw-window-handle = { workspace = true }
+
+# Additional compositor-specific dependencies
+smallvec = "1.11"
+rustc-hash = "1.1"
+bitflags = "2.4"
+bytemuck = { version = "1.14", features = ["derive"] }
+
+[lib]
+crate-type = ["cdylib", "rlib"]

@@ -1,11 +1,11 @@
 # Piston
 
-An Android application that provides shortcuts for various utilities.
+An Android application that runs a VM of STEAMOS
 
 ## Features
 
 - **Launch SteamOS**: Launch SteamOS from a Deck.iso file
-- **Termux Org Page**: Quick shortcut to open the Termux GitHub organization page (https://github.com/termux)
+
 
 ## Usage
 

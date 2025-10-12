@@ -5,23 +5,44 @@ android {
     compileSdkVersion 34
     defaultConfig {
         applicationId "com.piston"
-        minSdkVersion 28
+        minSdkVersion 21  // Lowered for older device support
         targetSdkVersion 34
-        versionCode 1
-        versionName "1.0"
+        versionCode 2
+        versionName "1.1-legacy"
         externalNativeBuild {
             cmake {
-                cppFlags "-std=c11"
+                cppFlags "-std=c11 -DLEGACY_SUPPORT=1"
+                // Add flags for older CPU compatibility
+                arguments "-DANDROID_ARM_MODE=arm", 
+                          "-DANDROID_ARM_NEON=FALSE",
+                          "-DCMAKE_ANDROID_ARCH_ABI=armeabi-v7a"
             }
         }
         ndk {
-            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64'
+            // Extended architecture support including older variants
+            abiFilters 'armeabi-v7a', 'arm64-v8a', 'x86', 'x86_64', 'mips', 'mips64'
         }
     }
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            jniDebuggable true
+        }
+        // Add legacy build type for older systems
+        legacy {
+            initWith debug
+            minifyEnabled false
+            debuggable false
+            externalNativeBuild {
+                cmake {
+                    cppFlags "-std=c11 -DLEGACY_SUPPORT=1 -O2 -fno-strict-aliasing"
+                    arguments "-DANDROID_ARM_MODE=arm"
+                }
+            }
         }
     }
     externalNativeBuild {
