@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Piston</string>
+    <string name="launch_steamos">Launch SteamOS</string>
+    <string name="termux_org_page">Termux Org Page</string>
+    <string name="piston_shortcuts">Piston Shortcuts</string>
+</resources>
