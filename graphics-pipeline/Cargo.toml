@@ -1,0 +1,48 @@
+[package]
+name = "graphics-pipeline"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Workspace dependencies
+tokio = { workspace = true }
+anyhow = { workspace = true }
+log = { workspace = true }
+futures = { workspace = true }
+
+# Graphics and windowing
+winit = { workspace = true }
+wgpu = { workspace = true }
+raw-window-handle = { workspace = true }
+
+# Wayland protocol support
+wayland-server = { workspace = true }
+wayland-protocols = { workspace = true }
+
+# Async and concurrency
+async-trait = { workspace = true }
+
+# Serialization and IPC
+serde = { workspace = true }
+bincode = { workspace = true }
+
+# Memory management
+shared_memory = { workspace = true }
+memmap2 = { workspace = true }
+
+# Additional graphics dependencies
+bytemuck = "1.14"
+pollster = "0.3"
+image = "0.24"
+
+# Math and linear algebra
+glam = "0.24"
+
+# Error handling
+thiserror = "1.0"
+
+[features]
+default = ["vulkan", "opengl"]
+vulkan = []
+opengl = []
+software = []

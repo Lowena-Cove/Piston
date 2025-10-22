@@ -14,9 +14,18 @@ ndk = { workspace = true }
 ndk-sys = { workspace = true }
 jni = { workspace = true }
 
+# Error handling
+thiserror = "1.0"
+
+# Logging for Android
+android_logger = "0.13"
+
 # Compositor core
 compositor-core = { path = "../compositor-core" }
 wayland-server = { path = "../wayland-server" }
+
+# SteamOS emulator core
+steamos-emulator = { path = ".." }
 
 # Additional dependencies
 once_cell = "1.19"
